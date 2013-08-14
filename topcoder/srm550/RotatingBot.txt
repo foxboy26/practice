@@ -1,0 +1,67 @@
+#include <vector>
+using namespace std;
+
+class RotatingBot
+{
+public:
+	int minArea(vector <int> moves)
+	{
+		int size = moves.size();
+		int area = -1;
+		int w, h;
+		switch (size)
+		{
+		case 1: 
+			area = moves[0] + 1; break;
+		case 2: 
+			area = (moves[0] + 1) * (moves[1] + 1); break;
+		case 3: 
+			area = (max(moves[0], moves[2]) + 1) * (moves[1] + 1); break;
+		case 4:
+			if (moves[2] < moves[0]) return -1;
+			if (moves[2] == moves[0] && moves[1] <= moves[3]) return -1;
+			w = max(moves[0], moves[2]) + 1;
+			h = max(moves[1], moves[3]) + 1;
+			area = w * h; break;
+		default:
+			w = max(moves[0], moves[2]) + 1;
+			h = max(moves[1], moves[3]) + 1;
+			area = w * h;
+			
+			if (moves[2] < moves[0]) return -1;
+			else if (moves[2] == moves[0])
+			{
+				 if (moves[1] != moves[3] + 1) return -1;
+			}
+			else
+			{
+				if (moves[3] < moves[1]) return -1;
+				else if (moves[3] == moves[1])
+				{
+					moves[2] = moves[2] - moves[0];
+					moves[3] = moves[3] + 1;
+				}
+				else
+				{
+					moves[2] = moves[2] + 1;
+					moves[3] = moves[3] - moves[1];
+				}
+			}
+			
+			for (int i = 4; i < moves.size(); i++)
+			{
+				if (i == moves.size() - 1)
+				{
+					if(moves[i] >= moves[i - 2]) return -1;
+				}
+				else
+				{
+					if (moves[i] != moves[i - 2] - 1) return -1;
+				}
+			}			
+			break;
+		}
+		
+		return area;
+	}
+};
