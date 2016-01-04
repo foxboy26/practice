@@ -2,16 +2,16 @@ vector<vector<int> > levelOrder(TreeNode *root) {
     // Start typing your C/C++ solution below
     // DO NOT write int main() function
     vector<vector<int> > res;
-        
+
     if (root == NULL) {
         return res;
     }
-        
+
     int nodesInCurLevel = 0;
     int nodesInNextLevel = 0;
-        
+
     vector<int> levelNodes;
-        
+
     queue<TreeNode*> q;
     q.push(root);
     nodesInCurLevel++;
@@ -31,7 +31,7 @@ vector<vector<int> > levelOrder(TreeNode *root) {
             q.push(t->right);
             nodesInNextLevel++;
         }
-            
+
         if (nodesInCurLevel == 0) {
             res.push_back(levelNodes);
             levelNodes.clear();

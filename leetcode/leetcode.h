@@ -2,10 +2,13 @@
 #define _LEET_CODE__
 
 #include <iostream>
+#include <sstream>
 #include <iterator>
 #include <vector>
 #include <set>
 #include <map>
+#include <unordered_set>
+#include <unordered_map>
 #include <string>
 #include <stack>
 #include <queue>
@@ -81,7 +84,9 @@ void deleteTree(TreeNode* root) {
 
 template<typename T>
 void printVector(const vector<T>& v) {
-  copy(v.begin(), v.end(), ostream_iterator<char>(cout, " "));
+  for (int i = 0; i < v.size(); i++)
+    cout << v[i] << " ";
+  cout << endl;
 }
 
 #endif

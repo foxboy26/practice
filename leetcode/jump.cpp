@@ -11,10 +11,10 @@ public:
                 maxDis = cur;
                 step++;
             }
-            
+
             cur = max(cur, i + A[i]);
         }
-        
+
         return step;
     }
 };

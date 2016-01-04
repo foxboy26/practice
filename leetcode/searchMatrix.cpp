@@ -10,7 +10,7 @@ public:
             if (matrix[mid / n][mid % n] == target) {
                 return true;
             }
-            
+
             if (matrix[mid / n][mid % n] > target) {
                 h = mid;
             } else {

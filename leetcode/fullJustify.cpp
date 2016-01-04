@@ -24,17 +24,17 @@ public:
                     string s(L, ' ');
                     int idx = 0;
                     copy(words[b], s, idx);
-                    
+
                     if (count > 1) {
                         vector<int> space(count - 1, remain / (count-1));
                         for (int j = 0; j < remain % (count-1); j++)
-                            space[j]++;  
+                            space[j]++;
                         for (int j = 1; j < count; j++) {
                             idx += (words[b+j-1].length() + space[j-1]);
                             copy(words[b+j], s, idx);
-                        }    
+                        }
                     }
-                    
+
                     res.push_back(s);
 
                     acc = words[i].length();
@@ -42,7 +42,7 @@ public:
                     count = 1;
                 }
             }
-            
+
             string s(L, ' ');
             int idx = 0;
             copy(words[b], s, idx);
@@ -51,12 +51,11 @@ public:
                 copy(words[b+i], s, idx);
             }
             res.push_back(s);
-            
-            
+
             return res;
         }
     }
-    
+
     void copy(const string& src, string& des, int b) {
         for (int i = 0; i < src.length(); i++)
             des[b+i] = src[i];
