@@ -4,15 +4,14 @@ PROG: stamps
 LANG: C++
 */
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-int main()
-{
+int main() {
   ifstream fin("stamps.in");
   ofstream fout("stamps.out");
 
@@ -27,13 +26,12 @@ int main()
 
   dp[0] = 0;
   int i = 0;
-  bool last = false;
   while (dp[i] <= K) {
     ++i;
     int min_n = K;
     for (int j = 0; j < N; j++) {
-      if (i - stamp[j] >= 0 && dp[i-stamp[j]] < K) {
-        min_n = min(dp[i-stamp[j]], min_n);
+      if (i - stamp[j] >= 0 && dp[i - stamp[j]] < K) {
+        min_n = min(dp[i - stamp[j]], min_n);
       }
     }
     dp[i] = min_n + 1;
